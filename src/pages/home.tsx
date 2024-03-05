@@ -9,7 +9,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Trash } from "lucide-react";
+import { RefreshCcw, ShoppingBag, Trash } from "lucide-react";
 import { Badge } from "@/components/ui/badge"
 import DATA from "@/lib/DATA";
 import CATEGORY from "@/lib/CATEGORY";
@@ -89,19 +89,27 @@ export function Home() {
         const message = encodeURIComponent(`Pedido:\n${productsText}\n\nTotal: ${totalPrice.replace('.', ',')}`);
         const whatsappLink = `https://wa.me/+5534984081905?text=${message}`;
         window.open(whatsappLink, '_blank');
+
     }
 
     return (
         <div id="produtos" className="w-screen h-screen">
             <Header />
 
-            <input
-                type="text"
-                placeholder="Buscar verdura"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-6/12 m-10 rounded-xl h-10 px-4 border-2 border-black"
-            />
+            <div className="relative">
+                <input
+                    type="text"
+                    placeholder="Buscar verdura"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-6/12 m-10 rounded-xl h-10 px-4 border-2 border-black"
+                />
+
+                <Button className="absolute right-10 top-10 space-x-2" onClick={() => { window.location.reload() }}>
+                    <RefreshCcw /> <p className="hidden md:block lg:block">Atualizar</p>
+                </Button>
+            </div>
+
             <div className="flex w-11/12 md:w-6/12 lg-6/12 mx-10 justify-center mt-4">
                 {CATEGORY.map((item) => (
                     <Button key={item.id} variant={selectedCategory === item.name ? 'default' : 'outline'} className="mr-2" onClick={() => setSelectedCategory(item.name)}>{item.name}</Button>
