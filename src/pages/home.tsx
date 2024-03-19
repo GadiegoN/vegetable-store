@@ -164,26 +164,13 @@ export function Home() {
         const productsText = cartStore.map(item => `${item.amount}x ${item.name}`).join('\n');
 
         if (payment === "Dinheiro") {
-            const message = encodeURIComponent(`
-            Pedido:\n${productsText}\n\n
-            Total: ${totalPrice.replace('.', ',')}\n\n
-            Endereço >>>\n
-            Rua: ${street}, N°: ${number} - ${district}\n\n
-            Pagamento via: ${payment}\n\n
-            Troco para: ${payback} R$
-            `
+            const message = encodeURIComponent(`Pedido:\n${productsText}\n\nTotal: ${totalPrice.replace('.', ',')}\n\nEndereço >>>\nRua: ${street}, N°: ${number} - ${district}\n\nPagamento via: ${payment}\n\nTroco para: ${payback} R$`
             );
             const whatsappLink = `https://wa.me/+5534984081905?text=${message}`;
             window.open(whatsappLink, '_blank');
         }
 
-        const message = encodeURIComponent(`
-            Pedido:\n${productsText}\n\n
-            Total: ${totalPrice.replace('.', ',')}\n\n
-            Endereço >>>\n
-            Rua: ${street}, N°: ${number} - ${district}\n\n
-            Pagamento via: ${payment}
-            `
+        const message = encodeURIComponent(`Pedido:\n${productsText}\n\nTotal: ${totalPrice.replace('.', ',')}\n\nEndereço >>>\nRua: ${street}, N°: ${number} - ${district}\n\nPagamento via: ${payment}`
         );
         const whatsappLink = `https://wa.me/+5534984081905?text=${message}`;
         window.open(whatsappLink, '_blank');
