@@ -162,14 +162,15 @@ export function Home() {
 
     const handleSendWhatsAppMessage = () => {
         const productsText = cartStore.map(item => `${item.amount}x ${item.name}`).join('\n');
+
         if (payment === "Dinheiro") {
             const message = encodeURIComponent(`
-                Pedido:\n${productsText}\n\n
-                Total: ${totalPrice.replace('.', ',')}\n\n
-                Endereço >>>\n
-                Rua: ${street}, N°: ${number} - ${district}\n\n
-                Pagamento via: ${payment}\n\n
-                Troco para: ${payback} R$
+            Pedido:\n${productsText}\n\n
+            Total: ${totalPrice.replace('.', ',')}\n\n
+            Endereço >>>\n
+            Rua: ${street}, N°: ${number} - ${district}\n\n
+            Pagamento via: ${payment}\n\n
+            Troco para: ${payback} R$
             `
             );
             const whatsappLink = `https://wa.me/+5534984081905?text=${message}`;
